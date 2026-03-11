@@ -1,0 +1,19 @@
+{
+  "name": "moviesjs",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Jean Carlos",
+  "type": "module",
+  "main": "nodemon app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "handlebars": "^4.7.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
