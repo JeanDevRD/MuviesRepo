@@ -21,9 +21,34 @@ class Genre{
                     SaveToFile(dataPath, data);
                 }
             } else {
+                this.id = Math.random() * 1000;
                 data.push(this);
+                SaveToFile(dataPath, data);
             }   
-            SaveToFile(dataPath, data);
+        });
+    }
+
+    static GetAll(callback){
+        GetAllFromFile(dataPath, callback);
+    }
+
+    static GetById(id, callback){
+        GetAllFromFile(dataPath, (data) => {
+            const genre = data.find((genre) => genre.id === Number(id));
+            if(genre){
+                callback(genre);
+            } else {
+                callback(null);
+            }
+        });
+    }
+
+    static DeleteById(id){
+        GetAllFromFile(dataPath, (data) => {
+            const newData = data.filter((genre) => genre.id !== Number(id));
+            SaveToFile(dataPath, newData);
         });
     }
 }
+
+export default Genre;
