@@ -3,7 +3,7 @@ import fs from "fs";
 export function GetAllFromFile(dataPath, callback) {
     fs.readFile(dataPath,(err, data) => {
         if (err) {
-            callback(err, null);
+            callback([]);
         } else {
             callback(JSON.parse(data));
         }
