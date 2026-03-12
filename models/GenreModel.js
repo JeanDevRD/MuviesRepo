@@ -43,12 +43,12 @@ class Genre{
         });
     }
 
-    static DeleteById(id){
-        GetAllFromFile(dataPath, (data) => {
-            const newData = data.filter((genre) => genre.id !== Number(id));
-            SaveToFile(dataPath, newData);
-        });
-    }
+    static Delete(id) {
+    GetAllFromFile(dataPath, (data) => {
+        const newData = data.filter((genre) => genre.id !== Number(id));
+        SaveToFile(dataPath, newData);
+    });
+}
 }
 
 export default Genre;
