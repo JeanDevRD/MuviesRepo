@@ -1,0 +1,18 @@
+<div class="row mb-3">
+  <div class="col-12">
+    <a href="/" class="btn btn-outline-secondary btn-sm mb-3">
+      <i class="bi bi-arrow-left"></i> Volver al inicio
+    </a>
+    <h1><i class="bi bi-play-circle-fill"></i> {{serie.name}}</h1>
+    <hr />
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8">
+    <div class="ratio ratio-16x9 shadow">
+      <iframe src="{{getYoutubeEmbedUrl serie.videoUrl}}"
+        title="{{serie.name}}" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>

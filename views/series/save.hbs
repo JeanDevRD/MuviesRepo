@@ -1,0 +1,69 @@
+<div class="row mb-3">
+  <h1>{{#if editMode}}Editar serie{{else}}Crear serie{{/if}}</h1>
+  <hr />
+</div>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-12 col-sm-7">
+
+    {{#if error}}
+      <div class="alert alert-danger"><i class="bi bi-exclamation-triangle"></i> {{error}}</div>
+    {{/if}}
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form method="post" action="/series/{{#if editMode}}edit/{{serie.id}}{{else}}create{{/if}}">
+
+          <div class="mb-3">
+            <label for="name" class="form-label fw-semibold">Nombre de la serie</label>
+            <input type="text" id="name" name="name" class="form-control"
+              placeholder="Ej: Breaking Bad"
+              value="{{#if editMode}}{{serie.name}}{{else}}{{formData.name}}{{/if}}" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="coverImage" class="form-label fw-semibold">URL imagen de portada</label>
+            <input type="text" id="coverImage" name="coverImage" class="form-control"
+              placeholder="https://ejemplo.com/imagen.jpg"
+              value="{{#if editMode}}{{serie.coverImage}}{{else}}{{formData.coverImage}}{{/if}}" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="videoUrl" class="form-label fw-semibold">Enlace de YouTube</label>
+            <input type="text" id="videoUrl" name="videoUrl" class="form-control"
+              placeholder="https://www.youtube.com/watch?v=..."
+              value="{{#if editMode}}{{serie.videoUrl}}{{else}}{{formData.videoUrl}}{{/if}}" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="genreId" class="form-label fw-semibold">Género</label>
+            <select id="genreId" name="genreId" class="form-select" required>
+              <option value="">-- Selecciona un género --</option>
+              {{#each genresList}}
+                <option value="{{this.id}}"
+                  {{#if editMode}}
+                    {{#if (eq this.id ../serie.genreId)}}selected{{/if}}
+                  {{else}}
+                    {{#if (eq this.id ../formData.genreId)}}selected{{/if}}
+                  {{/if}}>
+                  {{this.name}}
+                </option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+            <a href="/series/index" class="btn btn-secondary">
+              <i class="bi bi-arrow-left"></i> Volver
+            </a>
+            <button type="submit" class="btn btn-{{#if editMode}}primary{{else}}success{{/if}}">
+              <i class="bi bi-check-circle"></i>
+              {{#if editMode}}Guardar cambios{{else}}Crear serie{{/if}}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

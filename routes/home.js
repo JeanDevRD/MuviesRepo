@@ -1,5 +1,5 @@
 import express from 'express';
-import {GetHome} from '../controllers/homeController';
+import {GetHome} from '../controllers/homeController.js';
 
 const router = express.Router();
 

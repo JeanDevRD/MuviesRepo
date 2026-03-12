@@ -16,7 +16,7 @@ class Genre{
         GetAllFromFile(dataPath, (data) => {
             if(this.id !== 0){
                 const editGenreIndex = data.findIndex((genre) => genre.id === Number(this.id));
-                if(editGenreIndex !== 0){
+                if(editGenreIndex !== -1){
                     data[editGenreIndex] = this;
                     SaveToFile(dataPath, data);
                 }
